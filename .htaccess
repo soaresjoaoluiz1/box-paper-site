@@ -14,8 +14,11 @@
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
-  # Pretty URL: /obrigado → obrigado.html
+  # Pretty URLs (sem extensão .html)
   RewriteRule ^obrigado/?$ obrigado.html [L]
+  RewriteRule ^privacidade/?$ privacidade.html [L]
+  RewriteRule ^termos/?$ termos.html [L]
+  RewriteRule ^caixas-de-pizza-personalizadas/?$ caixas-de-pizza-personalizadas.html [L]
 </IfModule>
 
 # ----- Gzip Compression -----
@@ -82,7 +85,7 @@
 </IfModule>
 
 # ----- Custom Error Pages -----
-ErrorDocument 404 /index.html
+ErrorDocument 404 /404.html
 
 # ----- Block access to dev/build artifacts -----
 <FilesMatch "^(\.git|\.gitignore|\.env|package\.json|README\.md)">

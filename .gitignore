@@ -1,0 +1,15 @@
+# Dev artifacts (não vão pra produção)
+_scripts/
+_source-images/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log

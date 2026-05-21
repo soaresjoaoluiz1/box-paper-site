@@ -1,0 +1,16 @@
+# robots.txt — Box Paper Embalagens
+# https://boxpaperembalagens.com.br
+
+User-agent: *
+Allow: /
+Disallow: /obrigado
+Disallow: /obrigado.html
+Disallow: /*.tmp$
+Disallow: /_scripts/
+Disallow: /_source-images/
+
+# Crawl-delay para evitar abuso (opcional, Google ignora)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://boxpaperembalagens.com.br/sitemap.xml

@@ -19,6 +19,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1190499720804869');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1190499720804869&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     /* ===== OBRIGADO PAGE — extends main site identity ===== */
     body.thanks-page { background: var(--sky-50); }
@@ -391,13 +408,18 @@
   </div>
 </footer>
 
-<!-- Meta Pixel Lead event -->
+<!-- Meta Pixel — Lead event (com eventID da URL pra deduplicacao com index.html + CAPI) -->
 <script>
 (function () {
   const params = new URLSearchParams(location.search);
-  const eventId = params.get('event_id');
-  if (typeof fbq === 'function' && eventId) {
-    fbq('track', 'Lead', { content_name: 'Box Paper · Cadastro' }, { eventID: eventId });
+  const eventId = params.get('event_id') || ('lead-' + Date.now());
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {
+      content_name: 'Box Paper · Cadastro',
+      content_category: 'caixa-pizza',
+      value: 0,
+      currency: 'BRL'
+    }, { eventID: eventId });
   }
 })();
 </script>

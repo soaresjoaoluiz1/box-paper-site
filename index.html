@@ -73,6 +73,23 @@
   <!-- Sitemap & Verification (placeholder — adicione códigos de verificação quando criar GSC/Bing) -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1190499720804869');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1190499720804869&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -1052,6 +1069,17 @@
     if(ENDPOINT){
       fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});
     }
+    /* Dispara Lead no Meta Pixel (com eventID pra dedup com obrigado.html + CAPI) */
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {
+          content_name: 'Box Paper · Cadastro',
+          content_category: 'caixa-pizza',
+          value: 0,
+          currency: 'BRL'
+        }, { eventID: payload.event_id });
+      }
+    } catch(_) {}
     const params=new URLSearchParams({ event_id: payload.event_id });
     setTimeout(()=>{ window.location.href='obrigado.html?'+params.toString(); }, 250);
   });

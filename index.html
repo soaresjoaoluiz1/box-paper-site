@@ -1036,7 +1036,7 @@
     try{ const list=JSON.parse(localStorage.getItem('bp8_leads')||'[]'); list.push(payload); localStorage.setItem('bp8_leads', JSON.stringify(list)); }catch(_){}
     /* Endpoint do Apps Script da planilha LEADS - BOX PAPER | DROS AGÊNCIA
        Como gerar: ver _scripts/google-sheets-webhook.gs no repo */
-    const ENDPOINT='https://script.google.com/macros/s/AKfycbyDkqoA01fXK-ZJW4K1CKK8xLbML3cnJs525TA3rHZ0bNesR-cDI2AKOx9h8Ce7SLru/exec';
+    const ENDPOINT='https://script.google.com/macros/s/AKfycby9sP1aTulwLPQkrbyCKVKuW0t89bgQzdFKW3kgwn9Dizpf9pxdj7bp_TUR_xcjm0b9/exec';
     if(ENDPOINT){
       fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});
     }

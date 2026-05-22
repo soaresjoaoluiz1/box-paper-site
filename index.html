@@ -1017,8 +1017,20 @@
   form.addEventListener('input', e=>e.target.classList?.remove('invalid'));
   const genId=()=> (crypto&&crypto.randomUUID) ? crypto.randomUUID() :
     'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{const r=Math.random()*16|0; return (c==='x'?r:(r&3|8)).toString(16); });
+  /* impede que Enter num input avance o form se nao estiver na ultima etapa */
+  form.addEventListener('keydown', e=>{
+    if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current !== TOTAL){
+      e.preventDefault();
+      if(validateStep()) showStep(current+1);
+    }
+  });
   form.addEventListener('submit', e=>{
     e.preventDefault();
+    /* gate: so envia quando estiver na ultima etapa (impede submit acidental por Enter) */
+    if(current !== TOTAL){
+      if(validateStep()) showStep(current+1);
+      return;
+    }
     if(!validateStep()) return;
     const fd=new FormData(form); const data=Object.fromEntries(fd.entries());
     const t=JSON.parse(sessionStorage.getItem('bp8_tracking')||'{}');

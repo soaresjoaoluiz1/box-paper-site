@@ -677,7 +677,7 @@
         </ul>
       </div>
       <figure class="final-photo">
-        <img src="assets/img/entrega-caixa-pizza-pizzaria.jpg" alt="Entregador Box Paper entregando caixas para família" loading="lazy">
+        <img src="assets/img/entrega-caixa-pizza-pizzaria.jpg" alt="Van Box Paper entregando caixas de pizza personalizadas para a pizzaria Forno e Lenha" loading="lazy">
       </figure>
     </div>
   </div>
@@ -1034,7 +1034,12 @@
       user_agent: navigator.userAgent, screen: screen.width+'x'+screen.height,
     };
     try{ const list=JSON.parse(localStorage.getItem('bp8_leads')||'[]'); list.push(payload); localStorage.setItem('bp8_leads', JSON.stringify(list)); }catch(_){}
-    const ENDPOINT=''; if(ENDPOINT){ fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{}); }
+    /* Endpoint do Apps Script da planilha LEADS - BOX PAPER | DROS AGÊNCIA
+       Como gerar: ver _scripts/google-sheets-webhook.gs no repo */
+    const ENDPOINT='__GOOGLE_APPS_SCRIPT_URL__';
+    if(ENDPOINT && !ENDPOINT.startsWith('__')){
+      fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});
+    }
     const params=new URLSearchParams({ event_id: payload.event_id });
     setTimeout(()=>{ window.location.href='obrigado.html?'+params.toString(); }, 250);
   });

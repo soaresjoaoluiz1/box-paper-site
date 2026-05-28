@@ -782,9 +782,9 @@
           <select name="caixas_mes" required>
             <option value="">Selecione...</option>
             <option>Até 500 caixas/mês</option>
-            <option>500 – 1.500 caixas/mês</option>
-            <option>1.500 – 3.000 caixas/mês</option>
-            <option>3.000 – 5.000 caixas/mês</option>
+            <option>500 a 1.000 caixas/mês</option>
+            <option>1.000 a 2.000 caixas/mês</option>
+            <option>3.000 a 5.000 caixas/mês</option>
             <option>Mais de 5.000 caixas/mês</option>
             <option>Ainda não sei</option>
           </select>
@@ -1068,19 +1068,32 @@
     if(ENDPOINT){
       fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});
     }
-    /* Dispara Lead no Meta Pixel (com eventID pra dedup com obrigado.html + CAPI) */
+    /* Detecta volumes pequenos (<1000 caixas/mês) - vai pra plano mensal */
+    const isVolumePequeno = data.caixas_mes === 'Até 500 caixas/mês' || data.caixas_mes === '500 a 1.000 caixas/mês';
+    const customEvent = isVolumePequeno ? 'LeadMenos1000Caixas' : 'Lead1000Caixas';
+    const destPage     = isVolumePequeno ? 'obrigado-mensal.html' : 'obrigado.html';
+
+    /* Dispara Lead no Meta Pixel (com eventID pra dedup com pagina obrigado + CAPI) + custom event por volume */
     try {
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
           content_name: 'Box Paper · Cadastro',
           content_category: 'caixa-pizza',
+          caixas_mes: data.caixas_mes || '',
+          value: 0,
+          currency: 'BRL'
+        }, { eventID: payload.event_id });
+        fbq('trackCustom', customEvent, {
+          caixas_mes: data.caixas_mes || '',
+          faturamento: data.faturamento || '',
+          cidade: data.cidade || '',
           value: 0,
           currency: 'BRL'
         }, { eventID: payload.event_id });
       }
     } catch(_) {}
     const params=new URLSearchParams({ event_id: payload.event_id });
-    setTimeout(()=>{ window.location.href='obrigado.html?'+params.toString(); }, 250);
+    setTimeout(()=>{ window.location.href=destPage+'?'+params.toString(); }, 250);
   });
 })();
 </script>

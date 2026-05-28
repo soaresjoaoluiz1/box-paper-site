@@ -94,22 +94,43 @@
     }
     .thanks-lead strong { color: var(--ink); font-weight: 600; }
 
-    /* aviso em vermelho */
-    .thanks-alert {
+    /* aviso aprovado em verde */
+    .thanks-approved {
       max-width: 680px;
       margin: clamp(20px, 3vw, 28px) auto clamp(18px, 2.4vw, 22px);
-      padding: 16px 22px;
-      background: rgba(230, 43, 30, 0.06);
-      border: 1px solid rgba(230, 43, 30, 0.22);
-      border-left: 3px solid var(--tomato);
+      padding: 18px 24px;
+      background: rgba(34, 167, 93, 0.08);
+      border: 1px solid rgba(34, 167, 93, 0.28);
+      border-left: 3px solid #22a75d;
       border-radius: 10px;
-      color: var(--tomato-deep);
-      font-size: clamp(0.98rem, 1.2vw, 1.05rem);
-      line-height: 1.55;
       text-align: left;
-      font-weight: 500;
     }
-    .thanks-alert strong { color: var(--tomato-deep); font-weight: 700; }
+    .thanks-approved-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+      font-weight: 600;
+      color: #167a44;
+      letter-spacing: -0.012em;
+      margin-bottom: 6px;
+    }
+    .thanks-approved-title::before {
+      content: '';
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #22a75d;
+      box-shadow: 0 0 0 4px rgba(34, 167, 93, 0.20);
+      flex-shrink: 0;
+    }
+    .thanks-approved p {
+      margin: 0;
+      font-size: clamp(0.96rem, 1.15vw, 1.02rem);
+      line-height: 1.55;
+      color: #1a6d3f;
+    }
+    .thanks-approved p strong { color: #167a44; font-weight: 700; }
 
     /* Next steps */
     .next-steps-section {
@@ -263,7 +284,10 @@
   <div class="wrap">
     <div class="thanks-icon"><svg><use href="#i-check"/></svg></div>
     <h1>Cadastro recebido. <em>Pro seu volume, a entrega programada é mensal.</em></h1>
-    <p class="thanks-alert">Infelizmente <strong>não conseguimos entregar esta quantidade via entrega programada (semanal/quinzenal)</strong> — somente mensal para a sua região e quantidade. Um vendedor entrará em contato com você em breve.</p>
+    <div class="thanks-approved">
+      <div class="thanks-approved-title">Conseguimos lhe atender perfeitamente!</div>
+      <p>Para sua quantidade conseguimos oferecer a <strong>entrega mensal</strong>. Em breve um vendedor entrará em contato.</p>
+    </div>
     <p class="thanks-lead">A entrega <strong>semanal</strong> e <strong>quinzenal</strong> da Box Paper é pra pizzarias a partir de <strong>1.000 caixas/mês</strong>.</p>
   </div>
 </section>

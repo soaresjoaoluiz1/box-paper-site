@@ -94,71 +94,22 @@
     }
     .thanks-lead strong { color: var(--ink); font-weight: 600; }
 
-    /* card de explicação */
-    .plan-card {
-      max-width: 720px;
-      margin: clamp(28px, 4vw, 40px) auto 0;
-      background: #fff;
-      border: 1px solid var(--rule-ink);
-      border-radius: var(--radius);
-      padding: clamp(24px, 3vw, 36px);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px 22px;
+    /* aviso em vermelho */
+    .thanks-alert {
+      max-width: 680px;
+      margin: clamp(20px, 3vw, 28px) auto clamp(18px, 2.4vw, 22px);
+      padding: 16px 22px;
+      background: rgba(230, 43, 30, 0.06);
+      border: 1px solid rgba(230, 43, 30, 0.22);
+      border-left: 3px solid var(--tomato);
+      border-radius: 10px;
+      color: var(--tomato-deep);
+      font-size: clamp(0.98rem, 1.2vw, 1.05rem);
+      line-height: 1.55;
       text-align: left;
-      box-shadow: 0 14px 40px rgba(10, 37, 72, 0.06);
-    }
-    .plan-card-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
-      color: #fff;
-      display: inline-flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 16px rgba(92, 179, 232, 0.32);
-      flex-shrink: 0;
-    }
-    .plan-card-icon svg { width: 22px; height: 22px; stroke-width: 2.2; }
-    .plan-card h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 1.6vw, 1.32rem);
-      font-weight: 600; color: var(--ink);
-      letter-spacing: -0.012em; margin-bottom: 6px;
-    }
-    .plan-card p {
-      font-size: 0.98rem;
-      color: var(--ink-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-    .plan-card p strong { color: var(--ink); font-weight: 600; }
-    .plan-card-features {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      padding-top: 18px;
-      border-top: 1px solid var(--rule-ink);
-      margin-top: 4px;
-    }
-    .plan-feature {
-      display: flex; flex-direction: column; gap: 4px;
-    }
-    .plan-feature-label {
-      font-family: var(--font-mono);
-      font-size: 9.5px; letter-spacing: 0.20em;
-      text-transform: uppercase; color: var(--ink-muted);
       font-weight: 500;
     }
-    .plan-feature-val {
-      font-family: var(--font-display);
-      font-weight: 600; color: var(--ink);
-      font-size: 0.95rem;
-      letter-spacing: -0.012em;
-    }
-    @media (max-width: 560px) {
-      .plan-card { grid-template-columns: 1fr; text-align: center; }
-      .plan-card-icon { margin: 0 auto; }
-      .plan-card-features { grid-template-columns: 1fr 1fr; }
-    }
+    .thanks-alert strong { color: var(--tomato-deep); font-weight: 700; }
 
     /* Next steps */
     .next-steps-section {
@@ -312,29 +263,8 @@
   <div class="wrap">
     <div class="thanks-icon"><svg><use href="#i-check"/></svg></div>
     <h1>Cadastro recebido. <em>Pro seu volume, o plano é mensal.</em></h1>
+    <p class="thanks-alert">Infelizmente <strong>não conseguimos entregar esta quantidade via entrega programada (semanal/quinzenal)</strong> — somente mensal para a sua região e quantidade. Um vendedor entrará em contato com você em breve.</p>
     <p class="thanks-lead">A entrega <strong>semanal</strong> e <strong>quinzenal</strong> da Box Paper é pra pizzarias a partir de <strong>1.000 caixas/mês</strong>. Pro seu volume, montamos um plano <strong>mensal personalizado</strong> — você ganha igual: pagamento fracionado, personalização total e zero estoque parado.</p>
-
-    <div class="plan-card">
-      <div class="plan-card-icon"><svg><use href="#i-calendar"/></svg></div>
-      <div>
-        <h3>Plano Mensal Box Paper</h3>
-        <p>Uma entrega por mês, planejada com a sua pizzaria. <strong>Mesma personalização, mesmo pagamento fracionado, sem fidelidade.</strong></p>
-      </div>
-      <div class="plan-card-features">
-        <div class="plan-feature">
-          <span class="plan-feature-label">Frequência</span>
-          <span class="plan-feature-val">1× por mês</span>
-        </div>
-        <div class="plan-feature">
-          <span class="plan-feature-label">Personalização</span>
-          <span class="plan-feature-val">100% incluída</span>
-        </div>
-        <div class="plan-feature">
-          <span class="plan-feature-label">Pagamento</span>
-          <span class="plan-feature-val">fracionado</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 

@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — GA4 Box Paper -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CVBG5F4PM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5CVBG5F4PM');
+  </script>
+
   <title>Cadastro recebido — Box Paper Embalagens</title>
   <meta name="description" content="Recebemos seu cadastro. Em breve um consultor da Box Paper entrará em contato.">
   <meta name="robots" content="noindex, nofollow, noarchive">
@@ -425,6 +435,22 @@
       value: 0,
       currency: 'BRL'
     }, { eventID: eventId });
+  }
+
+  /* GA4 — conversao + variante 1000+ caixas (mesmo event_id pra cruzar com Pixel) */
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion_lead', {
+      event_id:   eventId,
+      page_type:  'thanks',
+      tier:       'mais-1000',
+      value:      250,
+      currency:   'BRL'
+    });
+    gtag('event', 'lead_mais_1000_caixas_thanks', {
+      event_id:   eventId,
+      value:      250,
+      currency:   'BRL'
+    });
   }
 })();
 </script>

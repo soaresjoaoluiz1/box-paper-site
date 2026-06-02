@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+  <!-- Google tag (gtag.js) — GA4 Box Paper -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CVBG5F4PM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5CVBG5F4PM');
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>Caixas de Pizza por Assinatura · Personalizadas com Entrega Programada | Box Paper Embalagens</title>
   <meta name="title" content="Caixas de Pizza por Assinatura · Personalizadas com Entrega Programada | Box Paper Embalagens">
@@ -1090,6 +1099,31 @@
           value: 0,
           currency: 'BRL'
         }, { eventID: payload.event_id });
+      }
+    } catch(_) {}
+
+    /* GA4 — generate_lead + variante por volume (mesmo event_id pra cruzar com Pixel) */
+    try {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_id:    payload.event_id,
+          form_name:   'box-paper-cadastro',
+          caixas_mes:  data.caixas_mes || '',
+          faturamento: data.faturamento || '',
+          cidade:      data.cidade || '',
+          uf:          data.uf || '',
+          tier:        isVolumePequeno ? 'menos-1000' : 'mais-1000',
+          value:       isVolumePequeno ? 50 : 250,
+          currency:    'BRL'
+        });
+        gtag('event', isVolumePequeno ? 'lead_menos_1000_caixas' : 'lead_mais_1000_caixas', {
+          event_id:    payload.event_id,
+          caixas_mes:  data.caixas_mes || '',
+          faturamento: data.faturamento || '',
+          cidade:      data.cidade || '',
+          value:       isVolumePequeno ? 50 : 250,
+          currency:    'BRL'
+        });
       }
     } catch(_) {}
     const params=new URLSearchParams({ event_id: payload.event_id });

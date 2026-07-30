@@ -270,7 +270,7 @@
           {
             "@type": "Question",
             "name": "Qual o pedido mínimo de caixa de pizza personalizada?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Trabalhamos com volumes a partir de 500 caixas/mês. Diferente das gráficas tradicionais que exigem lote de 5.000 unidades de uma vez, a Box Paper divide a quantidade em entregas programadas — você não precisa imobilizar capital nem estoque." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Depende do tipo de caixa: para caixa em 1 ou 2 cores, o pedido mínimo é 600 unidades. Para caixa colorida (policromia), o mínimo é 1.200 unidades. A entrega pode ser fracionada em lotes semanais, quinzenais ou mensais — você não imobiliza capital nem estoque." }
           },
           {
             "@type": "Question",
@@ -498,7 +498,7 @@
       <div class="compare-row">
         <div class="compare-feature">Pedido mínimo</div>
         <div class="compare-col compare-col--bad"><svg width="16" height="16"><use href="#i-x"/></svg> 5.000 caixas / lote</div>
-        <div class="compare-col compare-col--good"><svg width="16" height="16"><use href="#i-check"/></svg> Sob medida pela sua semana</div>
+        <div class="compare-col compare-col--good"><svg width="16" height="16"><use href="#i-check"/></svg> 600 unid. (1-2 cores) ou 1.200 (colorida) — entrega fracionada</div>
       </div>
       <div class="compare-row">
         <div class="compare-feature">Personalização</div>
@@ -653,7 +653,12 @@
       <details class="faq-item" data-motion="fade-up">
         <summary>Qual o pedido mínimo de caixa de pizza personalizada?</summary>
         <div class="faq-item-body">
-          <p>Trabalhamos com volumes a partir de 500 caixas/mês. Diferente das gráficas tradicionais que exigem lote de 5.000 unidades de uma vez, a Box Paper divide a quantidade em entregas programadas — você não precisa imobilizar capital nem estoque.</p>
+          <p>Depende do tipo de caixa que você escolher:</p>
+          <ul style="margin: 6px 0 6px 20px; padding: 0;">
+            <li><strong>1 ou 2 cores:</strong> mínimo 600 unidades</li>
+            <li><strong>Colorida (policromia):</strong> mínimo 1.200 unidades</li>
+          </ul>
+          <p>A entrega pode ser fracionada em lotes semanais, quinzenais ou mensais — você não precisa receber tudo de uma vez nem imobilizar capital.</p>
         </div>
       </details>
 
@@ -770,6 +775,11 @@
         </div>
       </div>
     </div>
+    <div class="modal-notice" style="background: #FFF8E7; border: 1px solid #F2C94C; border-radius: 8px; padding: 12px 14px; margin: 0 0 16px 0; font-size: 13px; line-height: 1.5; color: #4A3B1E;">
+      <strong>Pedido mínimo por tipo de caixa:</strong><br>
+      • <strong>1 ou 2 cores:</strong> mínimo 600 unidades<br>
+      • <strong>Colorida (policromia):</strong> mínimo 1.200 unidades
+    </div>
     <form id="cadastroForm" class="modal-form" novalidate>
       <div class="modal-step active" data-step="1">
         <label class="field">
@@ -787,12 +797,21 @@
       </div>
       <div class="modal-step" data-step="2">
         <label class="field">
+          <span class="field-label">Tipo de caixa *</span>
+          <select name="tipo_caixa" required>
+            <option value="">Selecione...</option>
+            <option>1 ou 2 cores (mínimo 600 unidades)</option>
+            <option>Colorida — policromia (mínimo 1.200 unidades)</option>
+            <option>Ainda não sei</option>
+          </select>
+        </label>
+        <label class="field">
           <span class="field-label">Caixas por mês *</span>
           <select name="caixas_mes" required>
             <option value="">Selecione...</option>
-            <option>Até 500 caixas/mês</option>
-            <option>500 a 1.000 caixas/mês</option>
+            <option>600 a 1.000 caixas/mês</option>
             <option>1.000 a 2.000 caixas/mês</option>
+            <option>2.000 a 3.000 caixas/mês</option>
             <option>3.000 a 5.000 caixas/mês</option>
             <option>Mais de 5.000 caixas/mês</option>
             <option>Ainda não sei</option>
